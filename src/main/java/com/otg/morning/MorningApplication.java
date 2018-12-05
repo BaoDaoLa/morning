@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public class MorningApplication {
 
+	//启动
 	public static void main(String[] args) {
 		SpringApplication.run(MorningApplication.class, args);
 	}
