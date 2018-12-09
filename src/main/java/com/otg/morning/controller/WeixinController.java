@@ -1,19 +1,38 @@
 package com.otg.morning.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import me.chanjar.weixin.mp.api.WxMpService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
- * Created by OTG on 2018/11/05.
+ * Created by SHNE on 2018/12/09.
  */
 @RestController
 @RequestMapping("/weixin")
 @Slf4j
 public class WeixinController {
+    @Autowired
+    private WxMpService wxMpService;
+
+    @GetMapping("/check/url")
+    public void checkUrl(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+                         @RequestParam("signature") String signature,
+                         @RequestParam("timestamp") String timestamp,
+                         @RequestParam("nonce") String nonce,
+                         @RequestParam("echostr") String echostr) throws IOException {
+        log.info("进入checkUrl方法.......");
+        if(!wxMpService.checkSignature(timestamp, nonce, signature)){
+            log.info("非法请求，可能属于伪造的请求！");
+        }else {
+            httpServletResponse.getWriter().print(echostr);
+        }
+    }
 
     @GetMapping("/auth")
     public void auth(@RequestParam("code") String code){
