@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by OTG on 2018/11/05.
+ * Created by SHEN on 2018/12/10
  */
 @Component
 public class WechatMpConfig {
@@ -28,6 +28,7 @@ public class WechatMpConfig {
         WxMpInMemoryConfigStorage wxMpConfigStorage=new WxMpInMemoryConfigStorage();
         wxMpConfigStorage.setAppId(accountConfig.getMpAppId());
         wxMpConfigStorage.setSecret(accountConfig.getMpAppSecret());
+        wxMpConfigStorage.setToken(accountConfig.getMpToken());
         return wxMpConfigStorage;
     }
 }

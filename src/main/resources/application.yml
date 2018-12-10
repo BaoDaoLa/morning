@@ -25,8 +25,9 @@ server:
 wechat:
 #  mpAppId: wxdcf91e9f784bfad0
 #  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
-  mpAppId: wxd898fcb01713c658
-  mpAppSecret: xxxxxxxxx #借用号appId,appSecret
+  mpAppId: wxe2c4567fb58dd5a7
+  mpAppSecret: 14028ef0bd7f2982da952e209a5c442a #借用号appId,appSecret
+  mpToken: morning
 #  openAppId: wx6ad144e54af67d87
 #  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
   openAppId: wx6ad144e54af67d87

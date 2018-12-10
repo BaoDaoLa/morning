@@ -22,7 +22,10 @@ public class WechatAccountConfig {
      * 公众平台密钥
      */
     private String mpAppSecret;
-
+    /**
+     * 公众平台token
+     */
+    private String mpToken;
     /**
      * 开放平台id
      */
