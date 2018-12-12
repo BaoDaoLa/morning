@@ -1,11 +1,10 @@
 package com.otg.morning.service.impl;
 
 import com.otg.morning.entity.ProductCategory;
-import com.otg.morning.repository.ProductCategoryRepository;
 import com.otg.morning.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,25 +13,25 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService{
 
-    @Autowired
-    private ProductCategoryRepository repository;
+//    @Autowired
+//    private ProductCategoryRepository repository;
     @Override
     public ProductCategory findOne(Integer categoryId) {
-        return repository.findOne(categoryId);
+        return null;
     }
 
     @Override
     public List<ProductCategory> findAll() {
-        return repository.findAll();
+        return new ArrayList<>();
     }
 
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
-        return repository.findByCategoryTypeIn(categoryTypeList);
+        return new ArrayList<>();
     }
 
     @Override
     public ProductCategory save(ProductCategory productCategory) {
-        return repository.save(productCategory);
+        return null;
     }
 }

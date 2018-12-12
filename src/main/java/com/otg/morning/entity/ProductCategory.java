@@ -1,42 +1,68 @@
 package com.otg.morning.entity;
 
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 类目
- * Created by OTG on 2018/11/05.
+ * @Author:zhaohengbin
+ * @Despriction:
+ * @Date:Created in 21:58 2018/12/5
+ * @Modify By:
  */
-@Entity
-@DynamicUpdate
-@Data
-//@Table(name = "product_category")
-public class ProductCategory {
-    /**类目id.**/
-    @Id
-    @GeneratedValue
+
+@EqualsAndHashCode(callSuper=false)
+public class ProductCategory implements Serializable {
     private Integer categoryId;
-    /**类目名字**/
+
     private String categoryName;
-    /** 类目编号**/
+
     private Integer categoryType;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public ProductCategory(){
+    private static final long serialVersionUID = 1L;
 
-    }
-    public ProductCategory(String categoryName,Integer categoryType){
-        this.categoryName=categoryName;
-        this.categoryType=categoryType;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName == null ? null : categoryName.trim();
+    }
+
+    public Integer getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(Integer categoryType) {
+        this.categoryType = categoryType;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

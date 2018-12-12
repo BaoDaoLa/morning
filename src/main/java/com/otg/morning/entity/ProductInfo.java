@@ -1,54 +1,119 @@
 package com.otg.morning.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.otg.morning.enums.ProductStatusEnum;
-import com.otg.morning.utils.EnumUtil;
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Created by OTG on 2018/11/17.
+ * @Author:zhaohengbin
+ * @Despriction:
+ * @Date:Created in 21:58 2018/12/5
+ * @Modify By:
  */
-@Entity
-@Data
-@DynamicUpdate
-public class ProductInfo implements Serializable{
-    @Id
-    private  String productId;
 
-    /**名字**/
+@EqualsAndHashCode(callSuper=false)
+public class ProductInfo implements Serializable {
+    private String productId;
+
     private String productName;
 
-    /**单价**/
     private BigDecimal productPrice;
 
-    /**库存**/
     private Integer productStock;
 
-    /**描述**/
     private String productDescription;
 
-    /**小图**/
     private String productIcon;
 
-    /**状态，0正常，1下架**/
-    private Integer productStatus=ProductStatusEnum.UP.getCode();
+    private Byte productStatus;
 
-    /**类目编号**/
     private Integer categoryType;
 
     private Date createTime;
 
     private Date updateTime;
 
-    @JsonIgnore
-    public ProductStatusEnum getProductStatusEnum(){
-        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
+    private static final long serialVersionUID = 1L;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId == null ? null : productId.trim();
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName == null ? null : productName.trim();
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public Integer getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(Integer productStock) {
+        this.productStock = productStock;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription == null ? null : productDescription.trim();
+    }
+
+    public String getProductIcon() {
+        return productIcon;
+    }
+
+    public void setProductIcon(String productIcon) {
+        this.productIcon = productIcon == null ? null : productIcon.trim();
+    }
+
+    public Byte getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(Byte productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public Integer getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(Integer categoryType) {
+        this.categoryType = categoryType;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
