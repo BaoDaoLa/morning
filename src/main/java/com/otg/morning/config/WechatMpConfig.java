@@ -29,6 +29,7 @@ public class WechatMpConfig {
         wxMpConfigStorage.setAppId(accountConfig.getMpAppId());
         wxMpConfigStorage.setSecret(accountConfig.getMpAppSecret());
         wxMpConfigStorage.setToken(accountConfig.getMpToken());
+        wxMpConfigStorage.setAesKey(accountConfig.getMpAesKey());
         return wxMpConfigStorage;
     }
 }

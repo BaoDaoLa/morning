@@ -27,6 +27,10 @@ public class WechatAccountConfig {
      */
     private String mpToken;
     /**
+     * 公众平台EncodingAESKey
+     */
+    private String mpAesKey;
+    /**
      * 开放平台id
      */
     private String openAppId;
