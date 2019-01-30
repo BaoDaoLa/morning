@@ -39,7 +39,7 @@ public class WechatController {
 //        WxMpService wxMpService=new WxMpServiceImpl();
         //1. 配置
         //2.调用方法
-        String url=projectUrlConfig.getWechatMpAuthorize()+"/sell/wechat/userInfo";
+        String url=projectUrlConfig.getWechatMpAuthorize()+"/wechat/userInfo";
         String redirectUrl=wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】获取code,redirectUrl={}",redirectUrl);
         return "redirect:"+redirectUrl;//重定向到下面一个方法

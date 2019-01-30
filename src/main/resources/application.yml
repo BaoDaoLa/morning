@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://47.106.64.14/sell?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
 #    jdbc:mysql://localhost:3306/csm"+"?serverTimezone=GMT%2B8
   jpa:
     show-sql: true
@@ -12,8 +12,6 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-server:
-  context-path: /sell
 #logging:
 #  pattern:
 #    console: "%d - %msg%n"
@@ -34,14 +32,14 @@ wechat:
 #  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
   openAppId: wx6ad144e54af67d87
   openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #借用帐号appId,appSecret
-  mchId: 1483469312
-  mchKey: C5245D70627C1F8E9964D494B0735025
-  keyPath: C:/Users/Administrator/Downloads/h5.p12
-  notifyUrl: http://OTG.natapp1.cc/notify
+  mchId: 1520607991
+  mchKey: n8U4dp9K5eWl4dOp8pBhqSVgGKSWlxHo
+  keyPath: D:/WXCertUtil/cert/1520607991_20190123_cert/apiclient_cert.p12
+  notifyUrl: http://yushanfang.online/notify
   templateId:
     orderStatus: GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
 
 projectUrl:
-  wechatMpAuthorize: http://OTG.natapp1.cc
-  wechatOpenAuthorize: http://OTG.natapp1.cc
-  sell: http://OTG.natapp1.cc
+  wechatMpAuthorize: http://yushanfang.online
+  wechatOpenAuthorize: http://yushanfang.online
+  sell: http://yushanfang.online

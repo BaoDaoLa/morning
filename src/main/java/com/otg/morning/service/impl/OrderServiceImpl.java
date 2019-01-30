@@ -58,50 +58,16 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO create(OrderDTO orderDTO) {
 
         String orderId= KeyUtil.genUniqueKey();
-        BigDecimal orderAmount=new BigDecimal(BigInteger.ZERO);
-//        List<CartDTO> cartDTOList=new ArrayList<>();
-
-        //1.查询商品（数量，价格）
-        for(OrderDetail orderDetail:orderDTO.getOrderDetailList()){
-            ProductInfo productInfo=productService.findOne(orderDetail.getProductId());
-            if(productInfo==null){
-                throw new SellException(ResultEnum.PRODUCT_NOT_EXIT);
-//                throw new ResponseBankException();
-            }
-            //2.计算订单总价
-            orderAmount=productInfo.getProductPrice()
-                    .multiply(new BigDecimal(orderDetail.getProductQuantity()))
-                    .add(orderAmount);
-            //订单详情入库
-            orderDetail.setDetailId(KeyUtil.genUniqueKey());
-            orderDetail.setOrderId(orderId);
-            BeanUtils.copyProperties(productInfo,orderDetail);
-//            orderDetailRepository.save(orderDetail);
-
-//            CartDTO cartDTO=new CartDTO(orderDetail.getProductId(),orderDetail.getProductQuantity());
-//            cartDTOList.add(cartDTO);
-
-        }
+        BigDecimal orderAmount=new BigDecimal("0.1");
 
         //3，写入订单数据库（orderMaster和orderDetail)
         OrderMaster orderMaster=new OrderMaster();
         orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO,orderMaster);
-//        orderMaster.setOrderId(orderId);
         orderMaster.setOrderAmount(orderAmount);
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
 //        orderMasterRepository.save(orderMaster);
-
-        //4.扣库存
-        List<CartDTO> cartDTOList=orderDTO.getOrderDetailList().stream().map(e->
-                new CartDTO(e.getProductId(),e.getProductQuantity()))
-                .collect(Collectors.toList());
-        productService.decreaseStock(cartDTOList);
-
-        //发送websocket消息
-        webSocket.sendMessage(orderDTO.getOrderId());
-
         return orderDTO;
     }
 
